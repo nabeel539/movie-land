@@ -22,12 +22,28 @@ const App = () => {
 
     const[searchTerm, setSearchTerm] = useState('')
 
-    const searchMovie = async (title) =>{
-        const response = await fetch(`${API_URL}&s=${title}`);
-        const data = await response.json();
-        setMovies(data.Search);
+    // const searchMovie = async (title) =>{
+    //     const response = await fetch(`${API_URL}&s=${title}`);
+    //     const data = await response.json();
+    //     setMovies(data.Search);
     
-    }
+    // }
+    
+    const searchMovie = async (title) => {
+        try {
+            const response = await fetch(`${API_URL}&s=${title}`);
+            if (response.ok) {
+                const data = await response.json();
+                setMovies(data.Search || []);
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error('There was a problem fetching the movies:', error);
+            setMovies([]);
+        }
+    };
+
     useEffect(() =>{
         searchMovie('superman')
     },[])
