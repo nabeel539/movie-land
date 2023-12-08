@@ -6,7 +6,7 @@ import MovieCard from './MovieCard'
 
 // API Key - 520f3c2b
 
-const API_URL = 'https://www.omdbapi.com?apikey=520f3c2b'
+const API_URL = 'http://www.omdbapi.com?apikey=520f3c2b'
 
 // const movie1 = {
 //     "Title": "Spiderman and Grandma",
